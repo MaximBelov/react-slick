@@ -80,7 +80,7 @@ var EventHandlers = {
   // invoked when swiping/dragging starts (just once)
   swipeStart: function (e) {
     if (e.target.tagName === 'IMG') {
-      e.preventDefault()
+      // e.preventDefault()
     }
     var touches, posX, posY;
 
@@ -324,17 +324,20 @@ var EventHandlers = {
       switch (swipeDirection) {
 
         case 'left':
-        case 'up':
           newSlide = this.state.currentSlide + this.getSlideCount();
           slideCount = this.props.swipeToSlide ? this.checkNavigable(newSlide) : newSlide;
           this.setState({ currentDirection: 0 })
           break;
 
         case 'right':
-        case 'down':
+
           newSlide = this.state.currentSlide - this.getSlideCount();
           slideCount = this.props.swipeToSlide ? this.checkNavigable(newSlide) : newSlide;
           this.setState({ currentDirection: 1 })
+          break;
+
+        case 'up':
+        case 'down':
           break;
 
         default:
